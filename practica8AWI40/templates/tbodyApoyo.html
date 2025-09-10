@@ -1,11 +1,11 @@
 {% for apoyo in apoyos %}
 <tr>
-    <td>{{ apoyo.Id_Apoyo }}</td>
-    <td>{{ apoyo.Id_Mascota }}</td>
-    <td>{{ apoyo.Id_Padrino }}</td>
-    <td>{{ apoyo.Monto }}</td>
-    <td>{{ apoyo.Causa }}</td>
-    <td><button class="btn btn-info btn-editar" data-Id_Apoyo="{{ apoyo.Id_Apoyo }}">Editar</button></td>
-    <td><button class="btn btn-info btn-eliminar" data-Id_Apoyo="{{ apoyo.Id_Apoyo }}">Eliminar</button></td>
+    <td>{{ apoyo.idApoyo }}</td>
+    <td>{{ apoyo.idMascota }}</td>
+    <td>{{ apoyo.idPadrino }}</td>
+    <td>{{ apoyo.monto }}</td>
+    <td>{{ apoyo.causa }}</td>
+    <td><button class="btn btn-info btn-editar" data-idApoyo="{{ apoyo.idApoyo }}">Editar</button></td>
+    <td><button class="btn btn-info btn-eliminar" data-idApoyo="{{ apoyo.idApoyo }}">Eliminar</button></td>
 </tr>
 {% endfor %}
