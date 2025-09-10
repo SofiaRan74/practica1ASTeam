@@ -98,6 +98,31 @@ app.controller("apoyosCtrl", function ($scope, $http) {
             causa: $("#txtCausa").val(),
         })
     })
+    $(document).off("click", ".btn-eliminar").on("click", ".btn-eliminar", function () {
+        const id = $(this).data("idApoyo")
+
+        if (!confirm("¿Seguro que deseas eliminar este apoyo?")) {
+            return
+        }
+
+        $.post("/apoyo/eliminar", { Id_Apoyo: id }, function () {
+            buscarApoyos()
+        }).fail(function(xhr) {
+            alert("Error al eliminar: " + xhr.responseText)
+        })
+    })
+    $(document).on("click", ".btn-ingredientes", function (event) {
+        const id = $(this).data("id")
+
+        $.get(`/productos/ingredientes/${id}`, function (html) {
+            modal(html, "Ingredientes", [
+                {html: "Aceptar", class: "btn btn-secondary", fun: function (event) {
+                    closeModal()
+                }}
+            ])
+        })
+    })
+})
 const DateTime = luxon.DateTime
 let lxFechaHora
 
@@ -115,4 +140,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
