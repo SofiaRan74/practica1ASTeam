@@ -17,9 +17,9 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: "app",
         controller: "appCtrl"
     })
-    .when("/productos", {
-        templateUrl: "productos",
-        controller: "productosCtrl"
+    .when("/apoyos", {
+        templateUrl: "apoyos",
+        controller: "apoyosCtrl"
     })
     .otherwise({
         redirectTo: "/"
@@ -66,9 +66,38 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
 
 app.controller("appCtrl", function ($scope, $http) {
 })
-app.controller("productosCtrl", function ($scope, $http) {
-})
+app.controller("apoyosCtrl", function ($scope, $http) {
+     function buscarApoyos() {
+        $.get("/tbodyApoyos", function (trsHTML) {
+            $("#tbodyApoyos").html(trsHTML)
+        })
+    }
+    
+    buscarApoyos()
+    
+ // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
 
+    var pusher = new Pusher('505a9219e50795c4885e', {
+      cluster: 'us2'
+    });
+
+    var channel = pusher.subscribe('canalApoyos');
+    channel.bind('eventoApoyos', function(data) {
+      //alert(JSON.stringify(data));
+        buscarApoyos()
+    })
+    $(document).on("submit", "#frmApoyo", function (event) {
+        event.preventDefault()
+
+        $.post("/apoyo", {
+            idApoyo: "",
+            idMascota: $("#txtIdMascota").val(),
+            idPadrino: $("#txtIdPadrino").val(),
+            monto: $("#txtMonto").val(),
+            causa: $("#txtCausa").val(),
+        })
+    })
 const DateTime = luxon.DateTime
 let lxFechaHora
 
@@ -86,3 +115,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
