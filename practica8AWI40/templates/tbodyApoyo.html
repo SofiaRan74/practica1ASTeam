@@ -1,9 +1,10 @@
-{% for producto in productos %}
+{% for apoyo in apoyos %}
 <tr>
-    <td>{{ producto.Id_Producto }}</td>
-    <td>{{ producto.Nombre_Producto }}</td>
-    <td>{{ producto.Precio }}</td>
-    <td>{{ producto.Existencias }}</td>
-    <td><button class="btn btn-info btn-ingredientes" data-id="{{ producto.Id_Producto }}">Ver ingredientes...</button></td>
+    <td>{{ apoyo.Id_Apoyo }}</td>
+    <td>{{ apoyo.Id_Mascota }}</td>
+    <td>{{ apoyo.Id_Padrino }}</td>
+    <td>{{ apoyo.Monto }}</td>
+    <td>{{ apoyo.Causa }}</td>
+    <td><button class="btn btn-info btn-apoyo" data-id="{{ apoyo.Id_Apoyo }}">Ver apoyos...</button></td>
 </tr>
 {% endfor %}
