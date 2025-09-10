@@ -5,6 +5,7 @@
     <td>{{ apoyo.Id_Padrino }}</td>
     <td>{{ apoyo.Monto }}</td>
     <td>{{ apoyo.Causa }}</td>
-    <td><button class="btn btn-info btn-apoyo" data-id="{{ apoyo.Id_Apoyo }}">Ver apoyos...</button></td>
+    <td><button class="btn btn-info btn-editar" data-Id_Apoyo="{{ apoyo.Id_Apoyo }}">Editar</button></td>
+    <td><button class="btn btn-info btn-eliminar" data-Id_Apoyo="{{ apoyo.Id_Apoyo }}">Eliminar</button></td>
 </tr>
 {% endfor %}
