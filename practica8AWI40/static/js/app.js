@@ -105,7 +105,7 @@ app.controller("apoyosCtrl", function ($scope, $http) {
             return
         }
 
-        $.post("/apoyo/eliminar", { Id_Apoyo: id }, function () {
+        $.post("/apoyo/eliminar", { idApoyo: id }, function () {
             buscarApoyos()
         }).fail(function(xhr) {
             alert("Error al eliminar: " + xhr.responseText)
@@ -140,5 +140,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
