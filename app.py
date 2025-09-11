@@ -38,7 +38,7 @@ def pusherApoyos():
       ssl=True
     )
     
-    pusher_client.trigger("canalApoyos", "eventoApoyos", {"message": "Hola Mundo!"})
+    pusher_client.trigger("for-nature-533", "eventoApoyos", {"message": "Hola Mundo!"})
     return make_response(jsonify({}))
 
 
@@ -281,3 +281,4 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
