@@ -51,14 +51,14 @@ def index():
 
     return render_template("index.html")
 
-@app.route("login.html")
+@app.route("/app")
 def app2():
     if not con.is_connected():
         con.reconnect()
 
     con.close()
 
-    return render_template("/app")
+    return render_template("login.html")
     # return "<h5>Hola, soy la view app</h5>"
 
 @app.route("/iniciarSesion", methods=["POST"])
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
