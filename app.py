@@ -51,7 +51,7 @@ def index():
 
     return render_template("index.html")
 
-@app.route("/app")
+@app.route("login.html")
 def app2():
     if not con.is_connected():
         con.reconnect()
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
