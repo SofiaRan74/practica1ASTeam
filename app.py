@@ -258,7 +258,7 @@ def guardarApoyo():
         INSERT INTO apoyos (idMascota, idPadrino, monto, causa)
                     VALUES    (%s,          %s,      %s,    %s)
         """
-        val =                 (mascota, padrino, monto, causa)
+        val =                 (idMascota, padrino, monto, causa)
     
     cursor.execute(sql, val)
     con.commit()
@@ -308,6 +308,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
