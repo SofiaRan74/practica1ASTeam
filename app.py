@@ -198,7 +198,7 @@ def buscarApoyos():
 
     return make_response(jsonify(registros))
 
-@app.route("/apoyos", methods=["POST"])
+@app.route("/apoyo", methods=["POST"])
 # Usar cuando solo se quiera usar CORS en rutas específicas
 # @cross_origin()
 def guardarApoyo():
@@ -241,7 +241,7 @@ def guardarApoyo():
     
     return make_response(jsonify({}))
 
-@app.route("/apoyos/<int:idApoyo>")
+@app.route("/apoyo/<int:idApoyo>")
 def editarApoyos(idApoyo):
     if not con.is_connected():
         con.reconnect()
@@ -262,7 +262,7 @@ def editarApoyos(idApoyo):
 
     return make_response(jsonify(registros))
 
-@app.route("/apoyos/eliminar", methods=["POST"])
+@app.route("/apoyo/eliminar", methods=["POST"])
 def eliminarApoyo():
     if not con.is_connected():
         con.reconnect()
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
