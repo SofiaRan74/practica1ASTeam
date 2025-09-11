@@ -145,6 +145,33 @@ def productosIngredientes(id):
 
     return render_template("modal.html", productosIngredientes=registros)
 
+@app.route("/mascotas")
+def listarMascotas():
+    if not con.is_connected():
+        con.reconnect()
+
+    cursor = con.cursor(dictionary=True)
+    sql = "SELECT idMascota, nombre FROM mascotas ORDER BY nombre"
+    cursor.execute(sql)
+    registros = cursor.fetchall()
+    con.close()
+
+    return make_response(jsonify(registros))
+
+@app.route("/padrinos")
+def listarPadrinos():
+    if not con.is_connected():
+        con.reconnect()
+
+    cursor = con.cursor(dictionary=True)
+    sql = "SELECT idPadrino, nombre FROM padrinos ORDER BY nombrePadrino"
+    cursor.execute(sql)
+    registros = cursor.fetchall()
+    con.close()
+
+    return make_response(jsonify(registros))
+
+
 @app.route("/apoyos/buscar", methods=["GET"])
 def buscarApoyos():
     if not con.is_connected():
@@ -218,10 +245,10 @@ def guardarApoyo():
         sql = """
         UPDATE apoyos
 
-        SET idMascota LIKE = %s,
-        idPadrino LIKE = %s,
-        monto     LIKE = %s,
-        causa     LIKE = %s
+        SET idMascota = %s,
+        idPadrino = %s,
+        monto     = %s,
+        causa     = %s
 
         WHERE idApoyo = %s
         """
@@ -281,6 +308,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
