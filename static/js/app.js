@@ -82,7 +82,7 @@ app.controller("apoyosCtrl", function ($scope, $http) {
       cluster: 'us2'
     });
 
-    var channel = pusher.subscribe('canalApoyos');
+    var channel = pusher.subscribe('for-nature-533');
     channel.bind('eventoApoyos', function(data) {
       //alert(JSON.stringify(data));
         buscarApoyos()
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
