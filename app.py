@@ -58,7 +58,7 @@ def app2():
 
     con.close()
 
-    return render_template("login.html")
+    return render_template("/app")
     # return "<h5>Hola, soy la view app</h5>"
 
 @app.route("/iniciarSesion", methods=["POST"])
@@ -205,8 +205,8 @@ def guardarApoyo():
     if not con.is_connected():
         con.reconnect()
 
-    id         = request.form["id"]
-    mascota    = request.form["mascota"]
+    idApoyo         = request.form["idApoyo"]
+    idMascota    = request.form["mascota"]
     padrino    = request.form["padrino"]
     monto = request.form["monto"]
     causa = request.form["causa"]
@@ -214,7 +214,7 @@ def guardarApoyo():
     
     cursor = con.cursor()
 
-    if id:
+    if idApoyo:
         sql = """
         UPDATE apoyo
 
@@ -225,7 +225,7 @@ def guardarApoyo():
 
         WHERE idApoyo = %s
         """
-        val = (mascota, padrino, monto, causa, id)
+        val = (mascota, padrino, monto, causa, idApoyo)
     else:
         sql = """
         INSERT INTO apoyos (idMascota, idPadrino, monto, causa)
@@ -242,7 +242,7 @@ def guardarApoyo():
     return make_response(jsonify({}))
 
 @app.route("/apoyos/<int:idApoyo>")
-def editarApoyos(id):
+def editarApoyos(idApoyo):
     if not con.is_connected():
         con.reconnect()
 
@@ -254,7 +254,7 @@ def editarApoyos(id):
 
     WHERE idApoyo = %s
     """
-    val    = (id,)
+    val    = (idApoyo,)
 
     cursor.execute(sql, val)
     registros = cursor.fetchall()
@@ -267,19 +267,20 @@ def eliminarApoyo():
     if not con.is_connected():
         con.reconnect()
 
-    id = request.form["id"]
+    idApoyo = request.form["idApoyo"]
 
     cursor = con.cursor(dictionary=True)
     sql    = """
     DELETE FROM apoyos
     WHERE idApoyo = %s
     """
-    val    = (id,)
+    val    = (idApoyo,)
 
     cursor.execute(sql, val)
     con.commit()
     con.close()
 
     return make_response(jsonify({}))
+
 
 
