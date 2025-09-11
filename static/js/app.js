@@ -69,7 +69,7 @@ function cargarMascotas() {
 $.get("/mascotas", function (data) {
     const $select = $("#mascota")
     $select.empty()
-    $select.append('<option value="">-- Selecciona una mascota --</option>')
+    $select.append('<option value="">Selecciona una mascota</option>')
     data.forEach(m => {
         $select.append(`<option value="${m.idMascota}">${m.nombre}</option>`)
     })
@@ -80,9 +80,9 @@ function cargarPadrinos() {
 $.get("/padrinos", function (data) {
     const $select = $("#padrino")
     $select.empty()
-    $select.append('<option value="">-- Selecciona un padrino --</option>')
+    $select.append('<option value="">Selecciona un padrino</option>')
     data.forEach(p => {
-        $select.append(`<option value="${p.idPadrino}">${p.nombre}</option>`)
+        $select.append(`<option value="${p.idPadrino}">${p.nombrePadrino}</option>`)
     })
 })
 }
@@ -163,3 +163,4 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
