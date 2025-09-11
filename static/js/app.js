@@ -99,22 +99,22 @@ app.controller("apoyosCtrl", function ($scope, $http) {
         })
     })
     $(document).off("click", ".btn-eliminar").on("click", ".btn-eliminar", function () {
-        const id = $(this).data("idApoyo")
+        const idApoyo = $(this).data("idApoyo")
 
         if (!confirm("¿Seguro que deseas eliminar este apoyo?")) {
             return
         }
 
-        $.post("/apoyo/eliminar", { idApoyo: id }, function () {
+        $.post("/apoyo/eliminar", { idApoyo: idApoyo }, function () {
             buscarApoyos()
         }).fail(function(xhr) {
             alert("Error al eliminar: " + xhr.responseText)
         })
     })
     $(document).on("click", ".btn-ingredientes", function (event) {
-        const id = $(this).data("id")
+        const idApoyo = $(this).data("idApoyo")
 
-        $.get(`/productos/ingredientes/${id}`, function (html) {
+        $.get(`/productos/ingredientes/${idApoyo}`, function (html) {
             modal(html, "Ingredientes", [
                 {html: "Aceptar", class: "btn btn-secondary", fun: function (event) {
                     closeModal()
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
