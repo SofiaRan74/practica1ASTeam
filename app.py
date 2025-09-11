@@ -198,25 +198,25 @@ def buscarApoyos():
 
     return make_response(jsonify(registros))
 
-@app.route("/apoyo", methods=["POST"])
+@app.route("/apoyos", methods=["POST"])
 # Usar cuando solo se quiera usar CORS en rutas específicas
 # @cross_origin()
 def guardarApoyo():
     if not con.is_connected():
         con.reconnect()
 
-    idApoyo         = request.form["idApoyo"]
-    idMascota    = request.form["mascota"]
+    idApoyo    = request.form["idApoyo"]
+    idMascota  = request.form["mascota"]
     padrino    = request.form["padrino"]
-    monto = request.form["monto"]
-    causa = request.form["causa"]
+    monto      = request.form["monto"]
+    causa      = request.form["causa"]
     # fechahora   = datetime.datetime.now(pytz.timezone("America/Matamoros"))
     
     cursor = con.cursor()
 
     if idApoyo:
         sql = """
-        UPDATE apoyo
+        UPDATE apoyos
 
         SET idMascota LIKE = %s,
         idPadrino LIKE = %s,
@@ -262,7 +262,7 @@ def editarApoyos(idApoyo):
 
     return make_response(jsonify(registros))
 
-@app.route("/apoyo/eliminar", methods=["POST"])
+@app.route("/apoyos/eliminar", methods=["POST"])
 def eliminarApoyo():
     if not con.is_connected():
         con.reconnect()
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
