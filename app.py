@@ -124,7 +124,7 @@ def tbodyApoyo():
         registro["Hora"]       = fecha_hora.strftime("%H:%M:%S")
     """
 
-    return render_template("tbodyApoyo.html", productos=registros)
+    return render_template("tbodyApoyo.html", apoyos=registros)
 
 @app.route("/productos/ingredientes/<int:idApoyo>")
 def productosIngredientes(id):
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
