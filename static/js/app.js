@@ -68,8 +68,8 @@ app.controller("appCtrl", function ($scope, $http) {
 })
 app.controller("apoyosCtrl", function ($scope, $http) {
      function buscarApoyos() {
-        $.get("/tbodyApoyos", function (trsHTML) {
-            $("#tbodyApoyos").html(trsHTML)
+        $.get("/tbodyApoyo", function (trsHTML) {
+            $("#tbodyApoyo").html(trsHTML)
         })
     }
     
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
