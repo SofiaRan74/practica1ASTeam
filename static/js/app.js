@@ -14,11 +14,11 @@ app.config(function ($routeProvider, $locationProvider) {
 
     $routeProvider
     .when("/", {
-        templateUrl: "app",
+        templateUrl: "/app",
         controller: "appCtrl"
     })
     .when("/apoyos", {
-        templateUrl: "apoyos",
+        templateUrl: "/apoyos",
         controller: "apoyosCtrl"
     })
     .otherwise({
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
