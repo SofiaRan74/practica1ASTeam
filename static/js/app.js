@@ -90,7 +90,7 @@ app.controller("apoyosCtrl", function ($scope, $http) {
     $(document).on("submit", "#frmApoyo", function (event) {
         event.preventDefault()
 
-        $.post("/apoyos", {
+        $.post("/apoyo", {
             idApoyo: "",
             idMascota: $("#txtIdMascota").val(),
             idPadrino: $("#txtIdPadrino").val(),
@@ -105,7 +105,7 @@ app.controller("apoyosCtrl", function ($scope, $http) {
             return
         }
 
-        $.post("/apoyos/eliminar", { idApoyo: idApoyo }, function () {
+        $.post("/apoyo/eliminar", { idApoyo: idApoyo }, function () {
             buscarApoyos()
         }).fail(function(xhr) {
             alert("Error al eliminar: " + xhr.responseText)
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
