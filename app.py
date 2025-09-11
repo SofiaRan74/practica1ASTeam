@@ -173,7 +173,7 @@ def buscarApoyos():
 
     LIMIT 10 OFFSET 0
     """
-    val    = (busqueda, busqueda, busqueda)
+    val    = (busqueda, busqueda, busqueda, busqueda)
 
     try:
         cursor.execute(sql, val)
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
