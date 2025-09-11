@@ -94,8 +94,8 @@ app.controller("apoyosCtrl", function ($scope, $http) {
             idApoyo: "",
             idMascota: $("#txtIdMascota").val(),
             idPadrino: $("#txtIdPadrino").val(),
-            monto: $("#txtMonto").val(),
-            causa: $("#txtCausa").val(),
+            monto:     $("#txtMonto").val(),
+            causa:     $("#txtCausa").val(),
         })
     })
     $(document).off("click", ".btn-eliminar").on("click", ".btn-eliminar", function () {
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
