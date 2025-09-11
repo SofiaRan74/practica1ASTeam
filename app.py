@@ -164,7 +164,7 @@ def listarPadrinos():
         con.reconnect()
 
     cursor = con.cursor(dictionary=True)
-    sql = "SELECT idPadrino, nombre FROM padrinos ORDER BY nombrePadrino"
+    sql = "SELECT idPadrino, nombrePadrino FROM padrinos ORDER BY nombrePadrino"
     cursor.execute(sql)
     registros = cursor.fetchall()
     con.close()
@@ -308,6 +308,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
