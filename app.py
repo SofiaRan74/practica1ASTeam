@@ -218,10 +218,10 @@ def guardarApoyo():
         sql = """
         UPDATE apoyo
 
-        SET idMascota LIKE %s,
-        idPadrino LIKE %s,
-        monto     LIKE %s,
-        causa     LIKE %s
+        SET idMascota LIKE = %s,
+        idPadrino LIKE = %s,
+        monto     LIKE = %s,
+        causa     LIKE = %s
 
         WHERE idApoyo = %s
         """
@@ -229,7 +229,7 @@ def guardarApoyo():
     else:
         sql = """
         INSERT INTO apoyos (idMascota, idPadrino, monto, causa)
-                    VALUES    (%s,          %s,      %s)
+                    VALUES    (%s,          %s,      %s,    %s)
         """
         val =                 (mascota, padrino, monto, causa)
     
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
