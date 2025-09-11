@@ -92,7 +92,7 @@ def apoyos():
     return render_template("apoyos.html")
 
 @app.route("/tbodyApoyo")
-def tbodyApoyoss():
+def tbodyApoyo():
     if not con.is_connected():
         con.reconnect()
 
@@ -281,6 +281,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
