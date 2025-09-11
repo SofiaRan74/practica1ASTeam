@@ -91,7 +91,7 @@ def iniciarSesion():
 def apoyos():
     return render_template("apoyos.html")
 
-@app.route("/tbodyApoyos")
+@app.route("/tbodyApoyo")
 def tbodyApoyoss():
     if not con.is_connected():
         con.reconnect()
@@ -162,7 +162,7 @@ def buscarApoyos():
            monto,
            causa	
 
-    FROM apoyoss
+    FROM apoyos
 
     WHERE idMascota LIKE %s
     OR    idPadrino LIKE %s
@@ -281,4 +281,5 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
