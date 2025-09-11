@@ -252,7 +252,7 @@ def guardarApoyo():
 
         WHERE idApoyo = %s
         """
-        val = (mascota, padrino, monto, causa, idApoyo)
+        val = (idMascota, padrino, monto, causa, idApoyo)
     else:
         sql = """
         INSERT INTO apoyos (idMascota, idPadrino, monto, causa)
@@ -308,6 +308,7 @@ def eliminarApoyo():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
