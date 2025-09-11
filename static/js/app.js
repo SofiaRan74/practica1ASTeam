@@ -134,7 +134,7 @@ $(document).on("submit", "#frmApoyo", function (event) {
 
 // eliminar apoyo
 $(document).off("click", ".btn-eliminar").on("click", ".btn-eliminar", function () {
-    const idApoyo = $(this).data("idApoyo")
+    const idApoyo = $(this).data("id")
 
     if (!confirm("¿Seguro que deseas eliminar este apoyo?")) {
         return
@@ -163,4 +163,5 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
 
