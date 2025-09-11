@@ -85,12 +85,12 @@ app.controller("apoyosCtrl", function ($scope, $http) {
     var channel = pusher.subscribe('for-nature-533');
     channel.bind('eventoApoyos', function(data) {
       //alert(JSON.stringify(data));
-        buscarApoyos()
+    buscarApoyos()
     })
     $(document).on("submit", "#frmApoyo", function (event) {
         event.preventDefault()
 
-        $.post("/apoyo", {
+        $.post("/apoyos", {
             idApoyo: "",
             idMascota: $("#txtIdMascota").val(),
             idPadrino: $("#txtIdPadrino").val(),
@@ -105,7 +105,7 @@ app.controller("apoyosCtrl", function ($scope, $http) {
             return
         }
 
-        $.post("/apoyo/eliminar", { idApoyo: idApoyo }, function () {
+        $.post("/apoyos/eliminar", { idApoyo: idApoyo }, function () {
             buscarApoyos()
         }).fail(function(xhr) {
             alert("Error al eliminar: " + xhr.responseText)
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
