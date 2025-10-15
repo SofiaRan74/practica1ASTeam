@@ -91,12 +91,34 @@ app.controller("appCtrl", function ($scope, $http) {
 })
 
 app.controller("apoyosCtrl", function ($scope, $http) {
-function buscarApoyos() {
-    $.get("/tbodyApoyo", function (trsHTML) {
-        $("#tbodyApoyo").html(trsHTML)
-    })
-}
-
+function buscarApoyos(texto = "") {
+        if (texto.trim() === "") {
+            $.get("/tbodyApoyo", function (trsHTML) {
+                $("#tbodyApoyo").html(trsHTML)
+            })
+        } else {
+            $.get("/apoyos/buscar", { busqueda: texto }, function (data) {
+                // data = JSON con los objetos
+                let html = ""
+                data.forEach(item => {
+                    html += `
+                        <tr>
+                            <td>${item.idMascota}</td>
+                            <td>${item.idPadrino}</td>
+                            <td>${item.monto}</td>
+                            <td>${item.causa}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm btn-eliminar" data-id="${item.idApoyo}">
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    `
+                })
+                $("#tbodyApoyo").html(html)
+            })
+        }
+    }
 // cargar datos iniciales
 buscarApoyos()
 cargarMascotas()
@@ -163,6 +185,7 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
 
 
 
