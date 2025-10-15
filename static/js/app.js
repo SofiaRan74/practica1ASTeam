@@ -132,16 +132,16 @@ $(document).on("submit", "#frmApoyo", function (event) {
     })
 })
 $(document).on("click", "#chkActualizarAutoTbodyApoyo", function (event) {
-        if (this.checked) {
-            channel.bind("eventoApoyos", function(data) {
-                // alert(JSON.stringify(data))
-                buscarApoyos()
-            })
-            return
-        }
+    if (this.checked) {
+        channel.bind("eventoApoyos", function(data) {
+            // alert(JSON.stringify(data))
+            buscarApoyos()
+        })
+        return
+    }
 
-        channel.unbind("eventoApoyos")
-    })
+    channel.unbind("eventoApoyos")
+})
 
 // eliminar apoyo
 $(document).off("click", ".btn-eliminar").on("click", ".btn-eliminar", function () {
@@ -174,6 +174,7 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
 
 
 
