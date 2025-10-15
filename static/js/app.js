@@ -171,11 +171,11 @@ $(document).on("submit", "#frmApoyo", function (event) {
     }, function () {
         buscarApoyos()
         $("#frmApoyo")[0].reset()
+        $("#idApoyo").val("");
     }).fail(function(xhr) {
         alert("Error al guardar: " + xhr.responseText)
     })
 })
-
 // eliminar apoyo
 $(document).off("click", ".btn-eliminar").on("click", ".btn-eliminar", function () {
     const idApoyo = $(this).data("id")
@@ -207,6 +207,7 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
 
 
 
