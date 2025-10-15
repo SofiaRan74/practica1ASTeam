@@ -100,25 +100,28 @@ function buscarApoyos(texto = "") {
             $.get("/apoyos/buscar", { busqueda: texto }, function (data) {
                 // data = JSON con los objetos
                 let html = ""
-                data.forEach(item => {
+                data.forEach(apoyo => {
                     html += `
                         <tr>
-                            <td>${item.idMascota}</td>
-                            <td>${item.idPadrino}</td>
-                            <td>${item.monto}</td>
-                            <td>${item.causa}</td>
+                            <td>${apoyo.idApoyo}</td>
+                            <td>${apoyo.idMascota}</td>
+                            <td>${apoyo.idPadrino}</td>
+                            <td>${apoyo.monto}</td>
+                            <td>${apoyo.causa}</td>
                             <td>
-                                <button class="btn btn-danger btn-sm btn-eliminar" data-id="${item.idApoyo}">
+                                <button class="btn btn-warning btn-sm btnEditar" data-id="${apoyo.idApoyo}">
+                                    Editar
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm btn-eliminar" data-id="${apoyo.idApoyo}">
                                     Eliminar
                                 </button>
                             </td>
                         </tr>
-                    `
-                })
-                $("#tbodyApoyo").html(html)
-            })
-        }
-    }
+                    `;
+                });
+
 // cargar datos iniciales
 buscarApoyos()
 cargarMascotas()
@@ -204,6 +207,7 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
 
 
 
