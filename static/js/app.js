@@ -124,6 +124,11 @@ buscarApoyos()
 cargarMascotas()
 cargarPadrinos()
 
+$(document).on("click", "#btnBuscar", function () {
+    const texto = $("#Contbuscar").val()
+    buscarApoyos(texto)
+})
+
 // Enable pusher logging - don't include this in production
 Pusher.logToConsole = true;
 
@@ -185,6 +190,7 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
 
 
 
