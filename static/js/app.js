@@ -75,7 +75,7 @@ app.controller("apoyosCtrl", function ($scope, $http) {
     });
 
     // --- editar ---
-    $(document).on("click", "btnEditar", function () {
+    $(document).on("click", ".btn-editar", function () {
         const id = $(this).data("id");
 
         $.get("/apoyo/" + id, function (respuesta) {
@@ -155,5 +155,6 @@ function cargarPadrinos() {
 document.addEventListener("DOMContentLoaded", function (event) {
     activeMenuOption(location.hash);
 });
+
 
 
