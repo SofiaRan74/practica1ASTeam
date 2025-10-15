@@ -127,18 +127,19 @@ buscarApoyos()
 cargarMascotas()
 cargarPadrinos()
 
-$(document).on("click", "#btnBuscar", function () {
-    const texto = $("#Contbuscar").val()
-    buscarApoyos(texto)
-})
-$(document).on("click", "#btnEditar", function () {
+ $(document).on("click", "#btnBuscar", function () {
+        const texto = $("#Contbuscar").val();
+        buscarApoyos(texto);
+    });
+
+    // --- editar ---
+$(document).on("click", ".btnEditar", function () {
     const id = $(this).data("id");
 
     $.get("/apoyo/" + id, function (respuesta) {
         if (respuesta.length > 0) {
             const apoyo = respuesta[0];
-
-            $("#idApoyo").val(apoyo.idApoyo);      // IMPORTANTE para que haga UPDATE
+            $("#idApoyo").val(apoyo.idApoyo);
             $("#mascota").val(apoyo.idMascota);
             $("#padrino").val(apoyo.idPadrino);
             $("#monto").val(apoyo.monto);
@@ -207,6 +208,7 @@ const configFechaHora = {
 
 activeMenuOption(location.hash)
 })
+
 
 
 
