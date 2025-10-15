@@ -75,7 +75,7 @@ app.controller("apoyosCtrl", function ($scope, $http) {
     });
 
     // --- editar ---
-    $(document).on("click", ".btnEditar", function () {
+    $(document).on("click", "btnEditar", function () {
         const id = $(this).data("id");
 
         $.get("/apoyo/" + id, function (respuesta) {
@@ -87,8 +87,8 @@ app.controller("apoyosCtrl", function ($scope, $http) {
                 $("#monto").val(apoyo.monto);
                 $("#causa").val(apoyo.causa);
             }
-        });
-    });
+        })
+    })
 
     // --- guardar (insertar o actualizar) ---
     $(document).on("submit", "#frmApoyo", function (event) {
@@ -155,4 +155,5 @@ function cargarPadrinos() {
 document.addEventListener("DOMContentLoaded", function (event) {
     activeMenuOption(location.hash);
 });
+
 
